@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richa Ferry Setyawan — Software Engineer</title>
+  <meta name="description" content="Senior Software Engineer with 10+ years of experience building web applications, APIs, and distributed systems.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-secondary: #111118;
+      --bg-card: #16161f;
+      --border: #1e1e2e;
+      --text: #e4e4ec;
+      --text-secondary: #9898b0;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.3);
+      --max-width: 780px;
+      --radius: 12px;
+      --nav-bg: rgba(10, 10, 15, 0.85);
+    }
+
+    [data-theme="light"] {
+      --bg: #fafafa;
+      --bg-secondary: #f0f0f3;
+      --bg-card: #ffffff;
+      --border: #e2e2e8;
+      --text: #1a1a24;
+      --text-secondary: #6b6b80;
+      --accent: #4f46e5;
+      --accent-glow: rgba(79, 70, 229, 0.15);
+      --nav-bg: rgba(250, 250, 250, 0.85);
+    }
+
+    [data-theme="light"] .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    [data-theme="light"] .project-tag {
+      background: rgba(79, 70, 229, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.06), transparent),
+                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(52, 211, 153, 0.04), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(20px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    nav .container {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 16px; padding-bottom: 16px;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .theme-toggle {
+      background: none; border: 1px solid var(--border);
+      border-radius: 8px; padding: 6px 10px;
+      cursor: pointer; font-size: 1.1rem;
+      transition: all 0.2s; line-height: 1;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
+
+    .hero { padding: 80px 0 48px; }
+    .hero-intro { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+    .hero h1 span { background: linear-gradient(135deg, var(--accent), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-subtitle { color: var(--text-secondary); font-size: 1.15rem; max-width: 540px; margin-bottom: 32px; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: var(--radius); font-size: 0.95rem;
+      font-weight: 600; text-decoration: none; cursor: pointer;
+      transition: all 0.2s; border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: white;
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--text-secondary); background: var(--bg-card); }
+
+    section { padding: 64px 0; }
+    .section-tag { color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .section-title { font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .section-desc { color: var(--text-secondary); margin-bottom: 36px; max-width: 560px; }
+
+    .timeline { position: relative; padding-left: 24px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 7px; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: 40px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: -20px; top: 4px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-date { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px; }
+    .timeline-role { font-size: 1.15rem; font-weight: 700; }
+    .timeline-company { color: var(--accent); font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; }
+    .timeline-desc { color: var(--text-secondary); font-size: 0.92rem; }
+    .timeline-desc ul { padding-left: 18px; }
+    .timeline-desc li { margin-bottom: 4px; }
+    .tokopedia-products { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tokopedia-products span {
+      font-size: 0.78rem; padding: 3px 10px; border-radius: 100px;
+      background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.15);
+      color: var(--accent);
+    }
+
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      padding: 6px 16px; border-radius: 100px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--text); }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color 0.2s, transform 0.2s, background 0.3s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-icon { font-size: 2rem; margin-bottom: 12px; }
+    .project-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .project-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .project-tag { font-size: 0.75rem; padding: 3px 10px; border-radius: 100px; background: rgba(99, 102, 241, 0.1); color: var(--accent); }
+    .project-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .project-links a:hover { color: var(--accent); }
+    .project-links { display: flex; gap: 16px; }
+
+    .edu-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; margin-bottom: 12px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .edu-degree { font-weight: 700; }
+    .edu-school { color: var(--accent); font-size: 0.92rem; }
+    .edu-date { color: var(--text-secondary); font-size: 0.85rem; }
+
+    .contact-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border-radius: var(--radius);
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); }
+    .contact-icon { font-size: 1.2rem; }
+
+    footer {
+      text-align: center; padding: 32px 0;
+      color: var(--text-secondary); font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero { padding: 48px 0 32px; }
+      section { padding: 40px 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .timeline { padding-left: 20px; }
+    }
+
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+  </style>
+  <script>
+    (function() {
+      const stored = localStorage.getItem('theme');
+      if (stored) {
+        // Manual override
+        if (stored === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        // Auto: light 6AM-6PM, dark 6PM-6AM
+        const hour = new Date().getHours();
+        if (hour >= 6 && hour < 18) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="nav-logo"><span>RF</span>Setyawan</div>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <p class="hero-intro fade-in">👋 Senior Software Engineer</p>
+      <h1 class="fade-in delay-1">Richa Ferry <span>Setyawan</span></h1>
+      <p class="hero-subtitle fade-in delay-2">
+        Senior software engineer with 10+ years of experience building production systems — from WordPress plugins to distributed cloud services handling millions of requests.
+      </p>
+      <div class="hero-cta fade-in delay-3">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="#experience" class="btn btn-outline">View experience ↓</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="experience">
+    <div class="container">
+      <p class="section-tag">Career</p>
+      <h2 class="section-title">Where I've Worked</h2>
+      <p class="section-desc">A decade of building across startups, e-commerce giants, and open-source products.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jun 2024 — Present</div>
+          <div class="timeline-role">WordPress Developer</div>
+          <div class="timeline-company">PublishPress</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Maintain and develop 3 WordPress plugins used by thousands of publishers worldwide</li>
+              <li>Contribute bug fixes, feature improvements, and compatibility updates</li>
+              <li>Open-source collaboration with a distributed team</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 2019 — Aug 2024 · 5 years 5 mos</div>
+          <div class="timeline-role">Senior Software Engineer</div>
+          <div class="timeline-company">Tokopedia (now ByteDance)</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Contributed across 10+ product lines serving millions of users across Indonesia</li>
+              <li>Worked on full-stack development across high-traffic distributed systems</li>
+            </ul>
+            <div class="tokopedia-products">
+              <span>Mitra Tokopedia</span>
+              <span>Distributor Tokopedia</span>
+              <span>Partner Tokopedia</span>
+              <span>OpenAPI Tokopedia</span>
+              <span>Platform Tokopedia</span>
+              <span>Pulsa Tokopedia</span>
+              <span>Tiket Tokopedia</span>
+              <span>Tokopedia Event</span>
+              <span>B2B Tokopedia</span>
+              <span>Tokopedia Fintech</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 2017 — Apr 2019 · 2 years</div>
+          <div class="timeline-role">Full Stack Developer</div>
+          <div class="timeline-company">Code.id</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Built <strong>Goodsales.co.id</strong> from scratch — a general-purpose sales tracking SaaS product</li>
+              <li>Developed Sales Force Automation for PT Merapi Utama Pharma</li>
+              <li>Built sales tracking system for PT Nojorono Tobacco International</li>
+              <li>Adapted custom business models for multiple enterprise clients</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec 2015 — Apr 2017 · 1 year 5 mos</div>
+          <div class="timeline-role">Web Developer</div>
+          <div class="timeline-company">FlowerAdvisor.co.id</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Maintained admin panel and performed bug fixes across the platform</li>
+              <li>Built CMS features for banner management and dynamic pricing</li>
+              <li>Created reporting systems and EDM campaigns</li>
+              <li>Worked on the Laravel-based site rebuild — testing, membership pages, bug fixes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Sep 2014 — Aug 2015 · 1 year</div>
+          <div class="timeline-role">Web Programmer</div>
+          <div class="timeline-company">Fisip.net</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Built client websites including company profiles, magazines, and online shops</li>
+              <li>Developed with custom CMS — delivered responsive, client-facing websites</li>
+              <li>Notable projects: listrikindonesia.com, bandungictexpo.com</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <p class="section-tag">Projects</p>
+      <h2 class="section-title">What I've Built</h2>
+      <p class="section-desc">Side projects and open-source work that showcase my engineering range.</p>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon">📧</div>
+          <div class="project-name">MailAnvil</div>
+          <div class="project-desc">
+            Full-stack transactional email service built on Cloudflare Workers. Handles sending, inbound routing, webhooks, and analytics — all on the edge.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Cloudflare Workers</span>
+            <span class="project-tag">D1</span>
+            <span class="project-tag">Queues</span>
+            <span class="project-tag">TypeScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://mailanvil.com" target="_blank">mailanvil.com →</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">💬</div>
+          <div class="project-name">Wasapin API</div>
+          <div class="project-desc">
+            WhatsApp Business API integration service running on Cloudflare Workers. Reliable messaging gateway for automated notifications and customer communication.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Cloudflare Workers</span>
+            <span class="project-tag">WhatsApp API</span>
+            <span class="project-tag">TypeScript</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">📊</div>
+          <div class="project-name">Goodsales</div>
+          <div class="project-desc">
+            Sales tracking and automation SaaS built from scratch. Designed for multi-tenant enterprise use with configurable business models per company.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">PHP</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">SaaS</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">🎟️</div>
+          <div class="project-name">Tixsport</div>
+          <div class="project-desc">
+            Production-grade sports event ticketing and operations platform. Full workflow: event creation → category → registration → payment (Midtrans) → QR ticket → check-in → export.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Next.js 15</span>
+            <span class="project-tag">React 19</span>
+            <span class="project-tag">TypeScript</span>
+            <span class="project-tag">PostgreSQL</span>
+            <span class="project-tag">Prisma</span>
+            <span class="project-tag">Redis/BullMQ</span>
+            <span class="project-tag">Midtrans</span>
+            <span class="project-tag">Docker</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">🔌</div>
+          <div class="project-name">PublishPress Plugins</div>
+          <div class="project-desc">
+            Maintain 3 WordPress plugins (Checklists, Authors, and more) serving thousands of publishers. Active contributor to the open-source WordPress ecosystem.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">PHP</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">Open Source</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/richaferry/PublishPress-Checklists" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <p class="section-tag">Skills</p>
+      <h2 class="section-title">Tech Stack</h2>
+      <p class="section-desc">Languages, frameworks, and tools I work with daily.</p>
+      <div class="skills-grid">
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">React.js</span>
+        <span class="skill-tag">Angular</span>
+        <span class="skill-tag">Laravel</span>
+        <span class="skill-tag">CodeIgniter</span>
+        <span class="skill-tag">Phalcon</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">jQuery</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Cloudflare Workers</span>
+        <span class="skill-tag">D1</span>
+        <span class="skill-tag">KV</span>
+        <span class="skill-tag">R2</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">WordPress</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Web Services</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <p class="section-tag">Education</p>
+      <h2 class="section-title">Academic Background</h2>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Information System</div>
+        <div class="edu-school">Universitas Muria Kudus</div>
+        <div class="edu-date">2011 — 2015</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <p class="section-tag">Contact</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-desc">Open to interesting opportunities and collaborations.</p>
+      <div class="contact-links">
+        <a href="mailto:me@richa.id" class="contact-link">
+          <span class="contact-icon">📧</span> me@richa.id
+        </a>
+        <a href="https://github.com/richaferry" target="_blank" class="contact-link">
+          <span class="contact-icon">🐙</span> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/aakricha" target="_blank" class="contact-link">
+          <span class="contact-icon">💼</span> LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Richa Ferry Setyawan. Built with plain HTML & CSS.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('theme-toggle');
+      var html = document.documentElement;
+
+      function updateIcon() {
+        btn.textContent = html.getAttribute('data-theme') === 'light' ? '🌙' : '☀️';
+      }
+      updateIcon();
+
+      btn.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'light' ? null : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next === 'light' ? 'light' : 'dark');
+        updateIcon();
+      });
+    })();
+  </script>
+</body>
+</html>
